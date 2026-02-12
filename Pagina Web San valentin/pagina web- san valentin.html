@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            text-align: center;
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        button {
+            background-color: #ff6b81;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, transform 0.2s, width 0.2s, height 0.2s;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #ff4c61;
+        }
+
+        #respuesta {
+            margin-top: 30px;
+            font-size: 1.5em;
+            display: none;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <h1>💖 Hola mi Cosita Hermosa ,te tengo una pregunta 💖</h1>
+    <p>¿Queres ser mi San Valentín este año?</p>
+    <div>
+        <button id="siBtn" onclick="clicSi()">¡Sí!</button>
+        <button id="noBtn" onclick="clicNo()">No 😅</button>
+    </div>
+    <div id="respuesta"></div>
+
+    <script>
+        const siBtn = document.getElementById('siBtn');
+        const noBtn = document.getElementById('noBtn');
+        const respuesta = document.getElementById('respuesta');
+
+        // Tamaños iniciales
+        let siWidth = 150;
+        let siHeight = 50;
+        let noWidth = 150;
+        let noHeight = 50;
+
+        // Mensajes bonitos para el botón "No"
+        const mensajes = [
+            "Mi vida, yo sé que queres 💕",
+            "No digas que no 😘",
+            "Vos sabes que yo te amo 😍",
+            "Solo presiona Sí, amor 💖",
+            "Yo se que queres, no seas mala  💘"
+            
+        ];
+
+        function clicNo() {
+            // Reducir tamaño del "No" y aumentar el "Sí"
+            noWidth = Math.max(noWidth - 10, 50);
+            noHeight = Math.max(noHeight - 5, 30);
+            siWidth += 10;
+            siHeight += 5;
+
+            noBtn.style.width = noWidth + "px";
+            noBtn.style.height = noHeight + "px";
+            siBtn.style.width = siWidth + "px";
+            siBtn.style.height = siHeight + "px";
+
+            // Mostrar mensaje bonito
+            const mensaje = mensajes[Math.floor(Math.random() * mensajes.length)];
+            respuesta.style.display = "block";
+            respuesta.textContent = mensaje;
+        }
+
+        function clicSi() {
+            window.location.href = "gracias.html";
+    }
+    </script>
+
+</body>
+</html>
